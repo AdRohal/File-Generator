@@ -61,4 +61,14 @@ public class FileManager {
         }
         return content.toString();
     }
+
+    // Delete a file
+    public static void deleteFile(String fileName) {
+        File file = new File(fileName);
+        if (file.delete()) {
+            System.out.println("File deleted: " + file.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+    }
 }
