@@ -12,7 +12,7 @@ public class FileManager {
             createFile("example.txt");
 
             // Write content to the file
-            writeToFile("example.txt", "Hello, this is a sample text!");
+            writeToFile("example.txt", "Hello, this is a sample text! 😀");
 
             // Read content from the file
             String content = readFromFile("example.txt");
@@ -25,7 +25,7 @@ public class FileManager {
             String nonExistentContent = readFromFile("non_existent.txt");
             System.out.println("Content from non-existent file: " + nonExistentContent);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An error occurred: " + e.getMessage());
         }
     }
 
@@ -33,9 +33,9 @@ public class FileManager {
     public static void createFile(String fileName) throws IOException {
         File file = new File(fileName);
         if (file.createNewFile()) {
-            System.out.println("File created: " + file.getName());
+            System.out.println("📄 File created: " + file.getName());
         } else {
-            System.out.println("File already exists.");
+            System.out.println("📄 File already exists.");
         }
     }
 
@@ -43,7 +43,7 @@ public class FileManager {
     public static void writeToFile(String fileName, String content) throws IOException {
         try (FileWriter writer = new FileWriter(fileName)) {
             writer.write(content);
-            System.out.println("Content written to the file.");
+            System.out.println("✏️ Content written to the file.");
         }
     }
 
@@ -57,7 +57,7 @@ public class FileManager {
             }
         } catch (IOException e) {
             // Handle the case when the file is not found
-            System.out.println("Error reading from the file: " + e.getMessage());
+            System.err.println("Error reading from the file: " + e.getMessage());
         }
         return content.toString();
     }
@@ -66,9 +66,9 @@ public class FileManager {
     public static void deleteFile(String fileName) {
         File file = new File(fileName);
         if (file.delete()) {
-            System.out.println("File deleted: " + file.getName());
+            System.out.println("🗑️ File deleted: " + file.getName());
         } else {
-            System.out.println("Failed to delete the file.");
+            System.err.println("❌ Failed to delete the file.");
         }
     }
 }
